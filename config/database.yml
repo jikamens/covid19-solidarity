@@ -80,6 +80,4 @@ test:
 #
 production:
   <<: *default
-  database: solidarity_production
-  username: solidarity
-  password: <%= ENV['SOLIDARITY_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
