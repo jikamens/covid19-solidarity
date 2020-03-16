@@ -6,6 +6,7 @@ class User < ApplicationRecord
   after_initialize :set_default_role, :if => :new_record?
 
   enum role: [:user, :admin]
+  has_many :requests
 
   def set_default_role
     self.role ||= :user

@@ -1,0 +1,43 @@
+<h1><%= current_user.admin? ? "All Requests" : "Your Requests" %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <% if current_user.admin? %>
+        <th>User</th>
+      <% end %>
+      <th>Name</th><th>Contact information</th><th>Payment information</th>
+      <th>Amount</th><th>Description</th><th>ZIP code</th><th>Closed at</th>
+      <th>Completed at</th><th>Created at</th><th>Updated at</th><th>Links</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @requests.each do |request| %>
+      <tr>
+        <% if current_user.admin? %>
+          <td><%= request.user.email %></td>
+        <% end %>
+        <td><%= request.name %></td>
+        <td><%= request.contact_info %></td>
+        <td><%= request.payment_info %></td>
+        <td>$<%= request.amount %></td>
+        <td><%= request.description %></td>
+        <td><%= request.zip_code %></td>
+        <td><%= request.closed_at %></td>
+        <td><%= request.completed_at %></td>
+        <td><%= request.created_at %></td>
+        <td><%= request.updated_at %></td>
+        <td><%= link_to 'View', request %>
+          <% if request.closed_at.blank? %>
+            <%= link_to 'Edit', edit_request_path(request) %>
+            <%= link_to 'Close', request_close_path(request) %>
+          <% end %>        
+          <% if current_user.admin? %>
+            <%= link_to 'Delete', request_path(request), method: :delete,
+                data: { confirm: 'Are you sure?' } %>
+          <% end %>
+          </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

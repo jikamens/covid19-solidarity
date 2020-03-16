@@ -1,0 +1,67 @@
+<h1>Edit Request</h1>
+
+<%= form_with model: @request, local: true do |form| %>
+
+  <% if @request.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@request.errors.count, "error") %> prohibited
+        this request from being saved:
+      </h2>
+      <ul>
+        <% @request.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>Enter your name as you would like others to see it. This is
+    optional.</p>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+
+  <p>Enter your contact information as you would like others to see
+    it. This is optional.</p>
+  <p>
+    <%= form.label :contact_information %><br>
+    <%= form.text_area :contact_info %>
+  </p>
+
+  <p>Enter your payment information, e.g., Paypal email address,
+    Venmo handle, Cash App handle, etc. You can enter more than one
+    if you wish. Make sure to say which apps they're for. This is
+    required.</p>
+  <p>
+    <%= form.label :payment_information %><br>
+    <%= form.text_area :payment_info %>
+  </p>
+
+  <p>Enter how much money you need, in US dollars. You need to
+    specify a positive whole number.</p>
+  <p>
+    <%= form.label :amount_needed %><br>
+    <%= form.number_field :amount %>
+  </p>
+
+  <p>Briefly tell your story. Who are you, what are your
+    circumstances, why are you asking for help, etc. This is
+    required.</p>
+  <p>
+    <%= form.label :description %><br>
+    <%= form.text_area :description %>
+  </p>
+
+  <p>Enter your ZIP code if it's relevant to your request. This is
+    optional.</p>
+  <p>
+    <%= form.label :ZIP_code %><br>
+    <%= form.text_area :zip_code %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

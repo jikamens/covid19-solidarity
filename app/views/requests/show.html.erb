@@ -1,0 +1,8 @@
+<h1>Request details</h1>
+
+<%= render 'request' %>
+
+<% if current_user.admin? %>
+  <p><%= link_to 'Delete this request', request_path(@request), method: :delete,
+      data: { confirm: 'Are you sure?' } %></p>
+<% end %>

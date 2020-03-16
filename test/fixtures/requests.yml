@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  contact_info: MyText
+  payment_info: MyText
+  amount: 1
+  description: MyText
+  zip_code: MyString
+  completed_at: 2020-03-15 16:30:49
+  user: one
+  hash_id: MyString
+
+two:
+  name: MyString
+  contact_info: MyText
+  payment_info: MyText
+  amount: 1
+  description: MyText
+  zip_code: MyString
+  completed_at: 2020-03-15 16:30:49
+  user: two
+  hash_id: MyString

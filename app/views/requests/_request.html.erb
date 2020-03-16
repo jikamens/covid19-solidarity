@@ -1,0 +1,46 @@
+<% if current_user.try(:id) == @request.user_id %>
+<% show_private_details = true %>
+<p>Here are the details of your request:</p>
+<% elsif current_user.admin? %>
+<% show_private_details = true %>
+<p>Request created by <%= @request.user.email %>:</p>
+<% end %>
+
+<table>
+  <tbody>
+    <tr><th align="left">Sharable link:</th>
+      <td><%= link_to request_url(@request), @request %></td>
+    <% if show_private_details %>
+      <tr><th align="left">Created at:</th>
+        <td><%= @request.created_at %></td></tr>
+      <% if @request.updated_at.present? %>
+      <tr><th align="left">Updated at:</th>
+        <td><%= @request.updated_at %></td></tr>
+      <% end %>
+      <% if @request.closed_at.present? %>
+      <tr><th align="left">Closed at:</th>
+        <td><%= @request.closed_at %></td></tr>
+      <% end %>
+      <% if @request.completed_at.present? %>
+      <tr><th align="left">Completed at:</th>
+        <td><%= @request.completed_at %></td></tr>
+      <% end %>
+    <% end %>
+    <% if @request.name.present? %>
+      <tr><th align="left">Name:</th><td><%= @request.name %></td></tr>
+    <% end %>
+    <% if @request.contact_info.present? %>
+      <tr><th align="left">Contact information:</th>
+        <td><%= @request.contact_info %></td></tr>
+    <% end %>
+    <tr><th align="left">Payment information:</th>
+      <td><%= @request.payment_info %></td></tr>
+    <tr><th align="left">Amount:</th>
+      <td>$<%= @request.amount %></td></tr>
+    <tr><th align="left">Description:</th>
+      <td><%= @request.description %></td></tr>
+    <% if @request.zip_code.present? %>
+      <tr><th align="left">ZIP code:</th><td><%= @request.zip_code %></td></tr>
+    <% end %>
+  </tbody>
+</table>

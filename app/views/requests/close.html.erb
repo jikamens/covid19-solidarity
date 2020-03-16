@@ -1,0 +1,11 @@
+<h1>Close Request</h1>
+
+<%= render 'request' %>
+
+<%= form_with model: @request, local: true do |form| %>
+<p>Are you sure you want to close this request?</p>
+<%= form.hidden_field :closing, :value => 'yes' %>
+<%= form.submit 'Close request' %>
+<%= form.submit 'Cancel' %>
+
+<% end %>

@@ -55,3 +55,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'newrelic_rpm'
 gem 'devise'
+gem 'friendly_id'
